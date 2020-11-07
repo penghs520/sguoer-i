@@ -2,7 +2,7 @@
 ## 果儿电商后台  （B2C）
 
 ## 技术选型
-- Java 11
+
 - spring-cloud-alibaba + dubbo
 - Spring Security
 - MySQL 8.0.15
