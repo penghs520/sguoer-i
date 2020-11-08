@@ -9,11 +9,10 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <modules>
-        <module>guoer-system</module>
         <module>guoer-common</module>
         <module>guoer-product</module>
         <module>guoer-admin</module>
-        <module>document</module>
+        <module>guoer-privilege</module>
     </modules>
 
     <properties>
