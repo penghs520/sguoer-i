@@ -12,6 +12,8 @@
         <module>guoer-system</module>
         <module>guoer-common</module>
         <module>guoer-product</module>
+        <module>guoer-admin</module>
+        <module>document</module>
     </modules>
 
     <properties>
@@ -109,6 +111,7 @@
                 <artifactId>swagger-spring-boot-starter</artifactId>
                 <version>${swagger.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>

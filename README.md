@@ -1,5 +1,5 @@
 # sguoer-i
-## 果儿电商后台  （B2C）
+## 果儿电商后台  （多商户B2C）
 
 ## 技术选型
 ### 后端技术
@@ -7,7 +7,7 @@
 | ---- | ---- | 
 |  **Spring Boot 2.3.x**     |      |
 |  **Spring Security**      |   安全框架（认证与授权）   |
-|  **JWT**     |  单点登录安全认证方案    |
+|  **JWT (Json Web Token)**     |  单点登录安全认证方案    |
 |  **Spring Cloud**    |  主要使用其Spring Cloud Gateway    |
 |  **Spring Cloud Alibaba**     |  Alibaba 系列微服务落地方案 包括Nacos、Sentinel等   |
 |  **Dubbo 2.7.x**   |  RPC远程调用    |
@@ -22,7 +22,7 @@
 |  **MyBatis Plus**    |  ORM框架    |
 |  **HikariCP**     |  SpringBoot默认集成的一款高性能数据库连接池    |
 |  **xxl-job**    |  分布式任务调度    |
-|  **对象存储服务`     |  待定    |
+|  **对象存储服务**     |  待定    |
 
 
 ## 功能模块
