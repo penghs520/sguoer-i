@@ -4,12 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>guoer-privilege</artifactId>
-        <groupId>com.guoer.shop</groupId>
+        <groupId>com.guoer.mall</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>privilege-rpc</artifactId>
 
+
+    <dependencies>
+        <dependency>
+            <groupId>com.guoer.mall</groupId>
+            <artifactId>guoer-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 
 </project>

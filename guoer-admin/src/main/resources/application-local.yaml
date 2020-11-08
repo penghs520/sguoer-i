@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+dubbo:
+#  scan:
+#    base-packages:
+  registry:
+    address: spring-cloud://localhost
+    register: false # 不需要发布服务
+  cloud:
+    subscribed-services: guoer-privilege-service
+  protocol:
+    name: dubbo
+    port: 20880
+  consumer:
+    check: false #启动时检查提供者是否存在，true报错，false忽略
+    timeout: 3000 #默认一秒
+spring:
+  application:
+    name: guoer-admin-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB  #文件最大单次上传限制
+      max-request-size: 5MB
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: Asia/Shanghai
+  swagger:
+    enabled: true
+    title: 果儿商城后台接口服务
+    description: 果儿商城后台接口服务
+    version: 1.0.0
+    contact:
+      name: penghs
+    base-package: com.guoer.admin.controller

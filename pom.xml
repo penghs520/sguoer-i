@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.guoer.shop</groupId>
+    <groupId>com.guoer.mall</groupId>
     <artifactId>sguoer-i</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
@@ -38,7 +38,7 @@
         <servlet.version>3.1</servlet.version>
 
         <xxl-job.version>2.0.1</xxl-job.version>
-        <seata.version>1.2.1</seata.version>
+        <seata.version>1.0.0</seata.version>
         <fastjson.version>1.2.74</fastjson.version>
     </properties>
 
