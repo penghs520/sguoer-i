@@ -11,6 +11,7 @@
     <modules>
         <module>guoer-system</module>
         <module>guoer-common</module>
+        <module>guoer-product</module>
     </modules>
 
     <properties>
