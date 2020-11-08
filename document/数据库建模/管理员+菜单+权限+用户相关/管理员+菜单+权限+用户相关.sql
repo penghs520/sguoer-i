@@ -1,4 +1,25 @@
-/* 系统用户表 */
+/*
+SQLyog Ultimate v12.08 (64 bit)
+MySQL - 8.0.22 : Database - sguo-e
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`sguo-e` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+USE `sguo-e`;
+
+/*Table structure for table `t_sys_admin` */
+
+DROP TABLE IF EXISTS `t_sys_admin`;
+
 CREATE TABLE `t_sys_admin` (
   `id` int NOT NULL,
   `username` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '管理员用户名',
@@ -9,13 +30,12 @@ CREATE TABLE `t_sys_admin` (
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `status` enum('on','off') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'on' COMMENT '是否启用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统管理员';
 
 /*Table structure for table `t_sys_admin_login_log` */
 
 DROP TABLE IF EXISTS `t_sys_admin_login_log`;
 
-/*系统用户登录历史表` */
 CREATE TABLE `t_sys_admin_login_log` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `admin_id` int NOT NULL COMMENT 't_ums_admin.id 管理员id',
@@ -29,19 +49,17 @@ CREATE TABLE `t_sys_admin_login_log` (
 
 DROP TABLE IF EXISTS `t_sys_admin_role`;
 
-/*管理员角色关系表` */
 CREATE TABLE `t_sys_admin_role` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `admin_id` int unsigned NOT NULL COMMENT 't_sys_admin.id',
   `role_id` int unsigned NOT NULL COMMENT 't_sys_role.id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='管理员角色关系表';
 
 /*Table structure for table `t_sys_menu` */
 
 DROP TABLE IF EXISTS `t_sys_menu`;
 
-/*系统菜单表 */
 CREATE TABLE `t_sys_menu` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `menu_name` varchar(32) NOT NULL,
@@ -50,42 +68,39 @@ CREATE TABLE `t_sys_menu` (
   `sort_id` int unsigned NOT NULL DEFAULT '0' COMMENT '排序id',
   `status` enum('on','off') NOT NULL DEFAULT 'on' COMMENT '是否启用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统菜单表';
 
 /*Table structure for table `t_sys_role` */
 
 DROP TABLE IF EXISTS `t_sys_role`;
 
-/*角色表` */
 CREATE TABLE `t_sys_role` (
-  `id` bigint NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `role_name` varchar(32) NOT NULL,
   `description` varchar(128) DEFAULT NULL,
-  `status` enum('on','off') NOT NULL DEFAULT 'on',
+  `status` enum('on','off') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'on' COMMENT '是否启用',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `sort_id` int DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统角色表';
 
 /*Table structure for table `t_sys_role_menu` */
 
 DROP TABLE IF EXISTS `t_sys_role_menu`;
 
-/*角色菜单关系表` */
 CREATE TABLE `t_sys_role_menu` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `role_id` int unsigned NOT NULL COMMENT 't_sys_role.id',
   `menu_id` int unsigned NOT NULL COMMENT 't_sys_menu.id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色菜单关系表';
 
 /*Table structure for table `t_ums_user` */
 
 DROP TABLE IF EXISTS `t_ums_user`;
 
-/*用户表` */
 CREATE TABLE `t_ums_user` (
-  `id` bigint NOT NULL,
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户名',
   `password` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '密码',
   `nickname` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '别名',
@@ -99,25 +114,23 @@ CREATE TABLE `t_ums_user` (
   `level_id` int NOT NULL COMMENT 't_ums_user_level.id 会员等级id',
   `status` enum('on','off') DEFAULT 'on' COMMENT '是否启用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
 
 /*Table structure for table `t_ums_user_level` */
 
 DROP TABLE IF EXISTS `t_ums_user_level`;
 
-/*会员等级表` */
 CREATE TABLE `t_ums_user_level` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `level_name` varchar(32) NOT NULL,
   `growth_need` int unsigned NOT NULL COMMENT '所需成长值',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='会员等级表';
 
 /*Table structure for table `t_ums_user_login_log` */
 
 DROP TABLE IF EXISTS `t_ums_user_login_log`;
 
-/*用户登录历史表` */
 CREATE TABLE `t_ums_user_login_log` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint unsigned NOT NULL,
@@ -125,16 +138,15 @@ CREATE TABLE `t_ums_user_login_log` (
   `ip` varchar(20) DEFAULT NULL,
   `login_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户登录历史表';
 
 /*Table structure for table `t_ums_user_receive_address` */
 
 DROP TABLE IF EXISTS `t_ums_user_receive_address`;
 
-/*用户收货地址表` */
 CREATE TABLE `t_ums_user_receive_address` (
-  `id` bigint NOT NULL,
-  `user_id` bigint NOT NULL COMMENT 't_ums_user.id',
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint unsigned NOT NULL COMMENT 't_ums_user.id',
   `address_tag` varchar(20) NOT NULL COMMENT '地址标签：如 公司、家',
   `mobile` varchar(20) NOT NULL COMMENT '收货人手机',
   `defualt_status` enum('yes','no') NOT NULL DEFAULT 'no' COMMENT '是否设为默认地址',
@@ -144,13 +156,12 @@ CREATE TABLE `t_ums_user_receive_address` (
   `region` varchar(128) DEFAULT NULL COMMENT '区/县',
   `detail_address` varchar(128) DEFAULT NULL COMMENT '详细地址',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户收获地址表';
 
 /*Table structure for table `t_ums_user_statistics` */
 
 DROP TABLE IF EXISTS `t_ums_user_statistics`;
 
-/*用户统计信息` */
 CREATE TABLE `t_ums_user_statistics` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint unsigned NOT NULL COMMENT 't_ums_user.id',
@@ -162,4 +173,9 @@ CREATE TABLE `t_ums_user_statistics` (
   `favorite_product_count` int unsigned DEFAULT '0' COMMENT '喜欢的商品数',
   `recent_order_time` datetime DEFAULT NULL COMMENT '最近下单事件',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户信息统计表';
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
