@@ -32,7 +32,7 @@
         <mysql.version>8.0.15</mysql.version>
         <swagger.version>2.1.5-RELEASE</swagger.version>
         <mapstruct.version>1.4.1.Final</mapstruct.version>
-        <fastjson.version>1.2.56</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
 
         <lombok.version>1.18.16</lombok.version>
         <servlet.version>3.1</servlet.version>
