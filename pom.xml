@@ -29,7 +29,7 @@
         <dubbo.version>2.7.7</dubbo.version>
         <mybatis.plus.boot.starter.version>3.3.2</mybatis.plus.boot.starter.version>
         <pagehelper.version>1.2.13</pagehelper.version>
-        <mysql.version>8.0.15</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <swagger.version>2.1.5-RELEASE</swagger.version>
         <mapstruct.version>1.4.1.Final</mapstruct.version>
         <fastjson.version>1.2.56</fastjson.version>
